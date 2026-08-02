@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&amp;family=Jost:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+  html, body { margin:0; padding:0; background:#080F0C; }
+  * { box-sizing:border-box; }
+  a { color:#E3B872; text-decoration:none; }
+  a:hover { color:#F3D3A0; }
+  ::selection { background:#E3B872; color:#0B1512; }
+  input[type=range]{ accent-color:#E3B872; }
+</style>
+</helmet>
+
+<div ref="{{ rootRef }}" style="background:#080F0C;color:#E8F0EA;font-family:Jost,system-ui,sans-serif;font-weight:300;font-size:17px;line-height:1.6;min-height:100vh;overflow-x:hidden">
+
+  <div style="position:sticky;top:0;z-index:50;background:rgba(8,15,12,0.82);backdrop-filter:blur(14px);border-bottom:1px solid #1E2F27">
+    <div style="max-width:1180px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;gap:20px;flex-wrap:wrap">
+      <a href="#top" style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;letter-spacing:.04em;color:#E8F0EA;white-space:nowrap">TML · BRASIL <span style="color:#E3B872">2027</span></a>
+      <div style="display:flex;gap:18px;flex-wrap:wrap;font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:#9CB2A6;margin-left:auto">
+        <a href="#entradas" style="color:#9CB2A6" data-en="Tickets">Entradas</a>
+        <a href="#dreamville" style="color:#9CB2A6">DreamVille</a>
+        <a href="#journey" style="color:#9CB2A6" data-en="Travel">Viaje</a>
+        <a href="#extras" style="color:#9CB2A6">Extras</a>
+        <a href="#comparador" style="color:#9CB2A6" data-en="Compare">Comparador</a>
+        <a href="#calculadora" style="color:#9CB2A6" data-en="Budget">Presupuesto</a>
+        <a href="#tips" style="color:#9CB2A6">Tips</a>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center">
+        <button onClick="{{ toggleLang }}" style="background:none;border:1px solid #2C4238;color:#E8F0EA;font-family:Jost,sans-serif;font-size:13px;letter-spacing:.1em;padding:7px 12px;border-radius:999px;cursor:pointer" style-hover="border-color:#E3B872;color:#E3B872">{{ langLabel }}</button>
+        <select value="{{ cur }}" onChange="{{ onCur }}" style="background:#101C17;border:1px solid #2C4238;color:#E8F0EA;font-family:Jost,sans-serif;font-size:13px;padding:7px 10px;border-radius:999px;cursor:pointer">
+          <option value="USD">US$</option>
+          <option value="EUR">EUR €</option>
+          <option value="BRL">BRL R$</option>
+          <option value="ARS">ARS $</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <section id="top" style="position:relative;min-height:88vh;display:flex;align-items:flex-end;overflow:hidden">
+    <div style="position:absolute;inset:0">
+      <image-slot id="tml-hero" shape="rect" fit="cover" src="https://beatsperminutemx.com/wp-content/uploads/2026/07/img_0187.jpg" placeholder="Mainstage Consciencia — Tomorrowland Bélgica 2026"></image-slot>
+    </div>
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,15,12,.55) 0%,rgba(8,15,12,.4) 30%,rgba(8,15,12,.88) 62%,rgba(8,15,12,.97) 90%);pointer-events:none"></div>
+    <div style="position:relative;max-width:1180px;margin:0 auto;padding:0 24px 72px;width:100%">
+      <p style="font-size:13px;letter-spacing:.34em;text-transform:uppercase;color:#E3B872;margin:0 0 18px" data-en="Newcomer's guide">Guía para primerizos</p>
+      <h1 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(46px,8vw,104px);line-height:.95;margin:0 0 22px;letter-spacing:-.015em;text-wrap:balance" data-en="Everything you can buy&lt;br&gt;&lt;em style=&quot;color:#E3B872;font-weight:400&quot;&gt;at Tomorrowland Brasil 2027&lt;/em&gt;">Todo lo que se puede comprar<br><em style="color:#E3B872;font-weight:400">en Tomorrowland Brasil 2027</em></h1>
+      <p style="max-width:620px;font-size:20px;color:#C3D3C9;margin:0 0 32px;text-wrap:pretty" data-en="Passes, DreamVille, travel packages and add-ons — explained in plain words, with real prices, so you know exactly what to click when the sale opens.">Pases, DreamVille, paquetes de viaje y adicionales — explicados en criollo, con precios reales, para que sepas exactamente qué clickear el día de la venta.</p>
+      <div style="display:flex;gap:14px;flex-wrap:wrap">
+        <a href="#entradas" style="background:#E3B872;color:#0B1512;padding:14px 26px;border-radius:999px;font-size:14px;letter-spacing:.12em;text-transform:uppercase;font-weight:500" data-en="Start here">Empezar acá</a>
+        <a href="#calculadora" style="border:1px solid #3A5347;color:#E8F0EA;padding:14px 26px;border-radius:999px;font-size:14px;letter-spacing:.12em;text-transform:uppercase" data-en="Calculate my budget">Calcular mi presupuesto</a>
+      </div>
+    </div>
+  </section>
+
+  <div style="max-width:1180px;margin:0 auto;padding:0 24px">
+
+    <section style="padding:88px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2px;background:#1E2F27;border:1px solid #1E2F27;border-radius:16px;overflow:hidden;margin-top:64px">
+      <div style="background:#0D1712;padding:30px 26px">
+        <p style="font-family:'Cormorant Garamond',serif;font-size:38px;color:#E3B872;margin:0 0 6px">01</p>
+        <h3 style="font-size:18px;font-weight:500;margin:0 0 8px" data-en="Register first">Primero, registrate</h3>
+        <p style="margin:0;color:#9CB2A6;font-size:15px" data-en="No registration, no ticket. Create your account before the sale — it is the only way in.">Sin registro no hay entrada. Creá tu cuenta antes de la venta: es la única forma de entrar.</p>
+      </div>
+      <div style="background:#0D1712;padding:30px 26px">
+        <p style="font-family:'Cormorant Garamond',serif;font-size:38px;color:#E3B872;margin:0 0 6px">02</p>
+        <h3 style="font-size:18px;font-weight:500;margin:0 0 8px" data-en="Decide your combo">Decidí tu combo</h3>
+        <p style="margin:0;color:#9CB2A6;font-size:15px" data-en="Festival only, DreamVille camping, or a full travel package. They are bought as different products.">Solo festival, DreamVille o paquete de viaje completo. Se compran como productos distintos.</p>
+      </div>
+      <div style="background:#0D1712;padding:30px 26px">
+        <p style="font-family:'Cormorant Garamond',serif;font-size:38px;color:#E3B872;margin:0 0 6px">03</p>
+        <h3 style="font-size:18px;font-weight:500;margin:0 0 8px" data-en="Add the extras">Sumá los adicionales</h3>
+        <p style="margin:0;color:#9CB2A6;font-size:15px" data-en="Shuttle, parking, lockers, breakfast, power bank. Some sell out well before the festival.">Shuttle, parking, lockers, desayuno, power bank. Varios se agotan mucho antes del festival.</p>
+      </div>
+    </section>
+
+    <section id="entradas" style="padding:110px 0 0">
+      <p style="font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:#E3B872;margin:0 0 14px">01 — Tickets</p>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(34px,5vw,58px);line-height:1.05;margin:0 0 16px" data-en="Festival-only passes">Entradas solo festival</h2>
+      <p style="max-width:660px;color:#9CB2A6;margin:0 0 40px;text-wrap:pretty" data-en="Access to the venue only. You sleep wherever you want. Comfort versions add VIP areas with privileged views, exclusive lounges, bars and VIP toilets.">Acceso al recinto y nada más: dormís donde vos quieras. Las versiones Confort suman áreas VIP con vistas privilegiadas, zonas de descanso exclusivas, barras y baños VIP.</p>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px">
+        <div style="border:1px solid #22352C;border-radius:16px;padding:28px 24px;background:linear-gradient(180deg,#0F1B15,#0B1512)">
+          <p style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#7E9689;margin:0 0 12px" data-en="1 day">1 día</p>
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:29px;font-weight:600;margin:0 0 12px">Day Pass</h3>
+          <p style="margin:0;color:#9CB2A6;font-size:15px" data-en="General access to the venue for one specific day: Friday, Saturday or Sunday.">Acceso general al recinto por un día específico: viernes, sábado o domingo.</p>
+        </div>
+        <div style="border:1px solid #22352C;border-radius:16px;padding:28px 24px;background:linear-gradient(180deg,#0F1B15,#0B1512)">
+          <p style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#7E9689;margin:0 0 12px" data-en="1 day · VIP">1 día · VIP</p>
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:29px;font-weight:600;margin:0 0 12px">Day Confort Pass</h3>
+          <p style="margin:0;color:#9CB2A6;font-size:15px" data-en="One day + VIP Comfort areas: privileged views, exclusive lounges, bars and VIP toilets.">Un día + áreas VIP (Confort): vistas privilegiadas, zonas de descanso exclusivas, barras y baños VIP.</p>
+        </div>
+        <div style="border:1px solid #3E5A49;border-radius:16px;padding:28px 24px;background:linear-gradient(180deg,#152219,#0B1512);position:relative">
+          <p style="position:absolute;top:-11px;left:24px;background:#E3B872;color:#0B1512;font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;border-radius:999px;margin:0" data-en="Most common">El más elegido</p>
+          <p style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#7E9689;margin:0 0 12px" data-en="3 days">3 días</p>
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:29px;font-weight:600;margin:0 0 12px">Full Madness Pass</h3>
+          <p style="margin:0;color:#9CB2A6;font-size:15px" data-en="General access for the whole weekend. Every DreamVille package already includes this pass.">Acceso general durante todo el fin de semana. Todos los paquetes de DreamVille ya incluyen este pase.</p>
+        </div>
+        <div style="border:1px solid #22352C;border-radius:16px;padding:28px 24px;background:linear-gradient(180deg,#0F1B15,#0B1512)">
+          <p style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#7E9689;margin:0 0 12px" data-en="3 days · VIP">3 días · VIP</p>
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:29px;font-weight:600;margin:0 0 12px">Full Madness Confort</h3>
+          <p style="margin:0;color:#9CB2A6;font-size:15px" data-en="The whole weekend + VIP Comfort areas.">Todo el fin de semana + áreas VIP (Confort).</p>
+        </div>
+      </div>
+      <p style="margin:22px 0 0;font-size:14px;color:#7E9689;font-style:italic" data-en="Prices for festival-only passes have not been published yet — this page will be updated when they are.">Los precios de los pases solo festival todavía no se publicaron: la página se actualiza cuando salgan.</p>
+    </section>
+
+    <section id="dreamville" style="padding:110px 0 0">
+      <div style="position:relative;border-radius:20px;overflow:hidden;height:300px;margin-bottom:48px">
+        <image-slot id="tml-dreamville" shape="rect" fit="cover" src="./assets/dreamville-brasil.png" placeholder="Foto de DreamVille BRASIL — Parque Maeda, Itu"></image-slot>
+        <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,15,12,.92),rgba(8,15,12,.15));pointer-events:none"></div>
+        <div style="position:absolute;left:34px;bottom:30px;pointer-events:none">
+          <p style="font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:#E3B872;margin:0 0 10px">02 — Camping</p>
+          <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(34px,5vw,58px);line-height:1;margin:0">DreamVille</h2>
+        </div>
+      </div>
+      <p style="max-width:700px;color:#9CB2A6;margin:0 0 8px;text-wrap:pretty" data-en="Every DreamVille pass in Brazil includes the Full Madness Pass (3 days) and exclusive access to Thursday's welcome party, The Gathering.">Todos los pases de DreamVille en Brasil incluyen el <strong style="color:#E8F0EA;font-weight:500">Full Madness Pass</strong> (3 días) y el acceso exclusivo a la fiesta de bienvenida del jueves: <em style="color:#E3B872">The Gathering</em>.</p>
+      <p style="max-width:700px;color:#7E9689;margin:0 0 34px;font-size:15px" data-en="Prices below are approximate, per package (not per person).">Los valores de abajo son aproximados y por paquete completo, no por persona.</p>
+
+      <div style="border:1px solid #22352C;border-radius:16px;overflow:hidden">
+        <div style="display:grid;grid-template-columns:1.1fr .55fr 2fr;gap:1px;background:#1E2F27">
+          <div style="background:#101C17;padding:14px 22px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#7E9689" data-en="Option">Opción</div>
+          <div style="background:#101C17;padding:14px 22px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#7E9689" data-en="Approx.">Valor aprox.</div>
+          <div style="background:#101C17;padding:14px 22px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#7E9689" data-en="What you get">Qué incluye</div>
+
+          <div style="background:#0B1512;padding:20px 22px"><strong style="font-weight:500">Magnificent Greens</strong><br><span style="color:#7E9689;font-size:14px">1 persona</span></div>
+          <div style="background:#0B1512;padding:20px 22px;color:#E3B872;font-family:'Cormorant Garamond',serif;font-size:24px"><span data-usd="510">US$ 510</span></div>
+          <div style="background:#0B1512;padding:20px 22px;color:#9CB2A6;font-size:15px" data-en="A plot in the general camping area. You bring your own tent and gear.">Espacio para acampar en el área general. Llevás tu propia carpa y accesorios.</div>
+
+          <div style="background:#0B1512;padding:20px 22px"><strong style="font-weight:500">Vida Nova</strong><br><span style="color:#7E9689;font-size:14px">2 personas</span></div>
+          <div style="background:#0B1512;padding:20px 22px;color:#E3B872;font-family:'Cormorant Garamond',serif;font-size:24px"><span data-usd="1300">US$ 1.300</span></div>
+          <div style="background:#0B1512;padding:20px 22px;color:#9CB2A6;font-size:15px" data-en="In the general area. Pre-pitched tent, sturdy mattress and a bedding / sleeping-bag kit ready when you arrive.">En el área general. Carpa preseteada, colchón resistente y kit de cama/bolsas de dormir listo a tu llegada.</div>
+
+          <div style="background:#0B1512;padding:20px 22px"><strong style="font-weight:500">Easy Tent</strong><br><span style="color:#7E9689;font-size:14px">2 personas</span></div>
+          <div style="background:#0B1512;padding:20px 22px;color:#E3B872;font-family:'Cormorant Garamond',serif;font-size:24px"><span data-usd="1450">US$ 1.450</span></div>
+          <div style="background:#0B1512;padding:20px 22px;color:#9CB2A6;font-size:15px" data-en="Official Tomorrowland-themed tent, already pitched, with inflatable mattress and sleeping bags.">Carpa con temática oficial de Tomorrowland ya armada, con colchón inflable y bolsas de dormir.</div>
+
+          <div style="background:#0B1512;padding:20px 22px"><strong style="font-weight:500">Spectacular Easy Tent</strong><br><span style="color:#7E9689;font-size:14px">2 personas</span></div>
+          <div style="background:#0B1512;padding:20px 22px;color:#E3B872;font-family:'Cormorant Garamond',serif;font-size:24px"><span data-usd="1550">US$ 1.550</span></div>
+          <div style="background:#0B1512;padding:20px 22px;color:#9CB2A6;font-size:15px" data-en="Same official themed tent, better located, with inflatable mattress and sleeping bags.">La misma carpa oficial temática, mejor ubicada, con colchón inflable y bolsas de dormir.</div>
+
+          <div style="background:#0B1512;padding:20px 22px"><strong style="font-weight:500">Área Mística</strong><br><span style="color:#7E9689;font-size:14px">Astera · Luna · Grande</span></div>
+          <div style="background:#0B1512;padding:20px 22px;color:#E3B872;font-family:'Cormorant Garamond',serif;font-size:24px"><span data-usd="2000" data-suffix="+">US$ 2.000+</span></div>
+          <div style="background:#0B1512;padding:20px 22px;color:#9CB2A6;font-size:15px" data-en="Exclusive accommodation in rigid structures or luxury tents, with real beds and high-end bathrooms.">Alojamiento exclusivo en estructuras rígidas o carpas de lujo, con camas reales y baños de alto nivel.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="journey" style="padding:110px 0 0">
+      <p style="font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:#E3B872;margin:0 0 14px">03 — Global Journey</p>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(34px,5vw,58px);line-height:1.05;margin:0 0 16px" data-en="Official travel packages">Paquetes de viaje oficiales</h2>
+      <p style="max-width:660px;color:#9CB2A6;margin:0 0 40px;text-wrap:pretty" data-en="Global Journey bundles the ticket with transport and accommodation. Handy if you are coming from abroad and do not want to organise anything yourself.">Global Journey empaqueta la entrada junto con transporte y alojamiento. Sirve si venís de afuera y no querés organizar nada por tu cuenta.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px">
+        <div style="border:1px solid #22352C;border-radius:16px;padding:30px 26px;background:#0B1512">
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;margin:0 0 14px">Flight &amp; Bus Packages</h3>
+          <p style="margin:0;color:#9CB2A6;font-size:15px" data-en="International or domestic flights, or official buses from major cities + accommodation (hotel or DreamVille) + Full Madness Pass.">Vuelos internacionales o nacionales, o buses oficiales desde ciudades principales + alojamiento (hotel o DreamVille) + entrada Full Madness.</p>
+        </div>
+        <div style="border:1px solid #22352C;border-radius:16px;padding:30px 26px;background:#0B1512">
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;margin:0 0 14px">Hotel Packages</h3>
+          <p style="margin:0;color:#9CB2A6;font-size:15px" data-en="Stays in selected hotels in São Paulo or Campinas + daily private shuttles to and from the festival + Full Madness Pass.">Estadías en hoteles seleccionados en <strong style="color:#E8F0EA;font-weight:500">São Paulo</strong> o <strong style="color:#E8F0EA;font-weight:500">Campinas</strong> + traslados diarios privados (shuttles) ida y vuelta al festival + entrada Full Madness.</p>
+        </div>
+        <div style="border:1px solid #22352C;border-radius:16px;padding:30px 26px;background:#0B1512">
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;margin:0 0 14px">Experience Packages</h3>
+          <p style="margin:0;color:#9CB2A6;font-size:15px" data-en="Special tours (like Discover Brasil) to travel around the country before the festival + the Tomorrowland experience.">Paquetes turísticos especiales (como <em>Discover Brasil</em>) para turistear por el país antes del festival + la experiencia Tomorrowland.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="extras" style="padding:110px 0 0">
+      <p style="font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:#E3B872;margin:0 0 14px">04 — Add-ons</p>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(34px,5vw,58px);line-height:1.05;margin:0 0 16px" data-en="Add-ons: what else is on sale">Adicionales: qué más se vende</h2>
+      <p style="max-width:660px;color:#9CB2A6;margin:0 0 44px;text-wrap:pretty" data-en="These are bought separately from the ticket. Several run out early — if you know you need it, buy it with the ticket.">Se compran aparte de la entrada. Varios se agotan temprano: si sabés que lo vas a necesitar, compralo junto con la entrada.</p>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:36px 44px">
+        <div>
+          <h3 style="font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:#E3B872;margin:0 0 18px;padding-bottom:12px;border-bottom:1px solid #22352C" data-en="Transport">Transporte</h3>
+          <div style="display:flex;flex-direction:column;gap:18px">
+            <div><strong style="font-weight:500;display:block">Tomorrowland Shuttle</strong><span style="color:#9CB2A6;font-size:15px" data-en="Official round-trip buses from strategic pick-up points (São Paulo, Campinas, Barueri, São Bernardo, GRU airport). Saves you the arrival and exit traffic.">Buses oficiales ida y vuelta desde puntos estratégicos (São Paulo, Campinas, Barueri, São Bernardo, aeropuerto GRU). Te evitan el tráfico de llegada y salida.</span></div>
+            <div><strong style="font-weight:500;display:block">DreamVille Shuttle</strong><span style="color:#9CB2A6;font-size:15px" data-en="Transport designed for campers, with luggage space. Leaves Thursday for arrival and returns Monday morning.">Transporte pensado para quienes se alojan en DreamVille, con espacio para equipaje. Sale el jueves para la llegada y regresa el lunes a la mañana.</span></div>
+            <div><strong style="font-weight:500;display:block">Parking Voucher</strong><span style="color:#9CB2A6;font-size:15px" data-en="Car/motorbike parking at Parque Maeda, per day or for the whole weekend if you stay at DreamVille. Buy it well in advance.">Estacionamiento de auto o moto en el Parque Maeda, por día o por todo el fin de semana si te quedás en DreamVille. Es indispensable comprarlo con anticipación.</span></div>
+          </div>
+        </div>
+
+        <div>
+          <h3 style="font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:#E3B872;margin:0 0 18px;padding-bottom:12px;border-bottom:1px solid #22352C" data-en="Food &amp; drink">Comida y experiencias</h3>
+          <div style="display:flex;flex-direction:column;gap:18px">
+            <div><strong style="font-weight:500;display:block">Restaurante Brasa (BBQ)</strong><span style="color:#9CB2A6;font-size:15px" data-en="Parrilla-style premium cuts: a set menu with starters, a main off the coals (meat, fish or vegetarian) and a welcome drink. Booked by time slot.">Parrilla estilo cortes premium: menú de pasos con aperitivos, corte principal a las brasas (carne, pescado o vegetariano) y bebida de bienvenida. Se reserva por turnos de horario.</span></div>
+            <div><strong style="font-weight:500;display:block">Breakfast Buffet (DreamVille)</strong><span style="color:#9CB2A6;font-size:15px" data-en="DreamVille guests only. Book a morning slot for an all-you-can-eat buffet: fruit, breads, eggs, tapioca, juices and coffee. What you pay counts as consumption credit.">Exclusivo para huéspedes de DreamVille. Reservás un turno a la mañana para un buffet libre completo: frutas, panes, huevos, tapioca, jugos y café. El valor de la reserva se valida como consumo.</span></div>
+          </div>
+        </div>
+
+        <div>
+          <h3 style="font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:#E3B872;margin:0 0 18px;padding-bottom:12px;border-bottom:1px solid #22352C" data-en="Welcome packs &amp; extras">Packs y extras</h3>
+          <div style="display:flex;flex-direction:column;gap:18px">
+            <div><strong style="font-weight:500;display:block">Welcome Cold Beer Pack</strong><span style="color:#9CB2A6;font-size:15px" data-en="DreamVille only: 12 cold beers + an official Tomorrowland cooler bag with ice, to pick up as soon as you arrive at the campsite.">Exclusivo DreamVille: pack de 12 cervezas heladas + bolsa térmica oficial de Tomorrowland con hielo, para retirar apenas llegás al camping mientras armás la carpa.</span></div>
+            <div><strong style="font-weight:500;display:block">Lockers (casilleros)</strong><span style="color:#9CB2A6;font-size:15px" data-en="Different sizes, with key or code, for the day or the whole weekend. Available in the general festival area and inside DreamVille.">De distintos tamaños, con llave o código, por el día o por todo el fin de semana. Hay en el área general del festival y en DreamVille.</span></div>
+          </div>
+        </div>
+
+        <div>
+          <h3 style="font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:#E3B872;margin:0 0 18px;padding-bottom:12px;border-bottom:1px solid #22352C" data-en="Official power bank">Power bank oficial</h3>
+          <div style="display:flex;flex-direction:column;gap:18px">
+            <div><strong style="font-weight:500;display:block" data-en="How the swap works">Cómo funciona el intercambio</strong><span style="color:#9CB2A6;font-size:15px" data-en="You rent a charged battery. When it runs out you swap it for a full one at any stand, as many times as you want during the whole weekend, at no extra cost.">Alquilás una batería portátil cargada. Cuando se acaba la carga, la intercambiás por una 100% llena en cualquier stand, las veces que quieras durante todo el fin de semana, sin costo extra.</span></div>
+            <div style="display:flex;gap:14px;flex-wrap:wrap">
+              <div style="border:1px solid #22352C;border-radius:12px;padding:14px 18px;flex:1;min-width:130px"><span style="color:#7E9689;font-size:13px;display:block">5.000 mAh</span><span style="color:#E3B872;font-family:'Cormorant Garamond',serif;font-size:26px" data-usd="31">US$ 31</span></div>
+              <div style="border:1px solid #22352C;border-radius:12px;padding:14px 18px;flex:1;min-width:130px"><span style="color:#7E9689;font-size:13px;display:block">10.000 mAh</span><span style="color:#E3B872;font-family:'Cormorant Garamond',serif;font-size:26px" data-usd="45">US$ 45</span></div>
+            </div>
+            <div><strong style="font-weight:500;display:block" data-en="Deposit">Depósito</strong><span style="color:#9CB2A6;font-size:15px" data-en="A 6-Pearl deposit is charged and refunded in full to your Pearls balance when you return the charger in good condition — Sunday night or Monday morning at DreamVille.">Se cobra un depósito de 6 perlas. Al devolver el cargador en buen estado el domingo a la noche o el lunes a la mañana en DreamVille, te reintegran las 6 perlas a tu saldo de Pearls.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="comparador" style="padding:110px 0 0">
+      <p style="font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:#E3B872;margin:0 0 14px">05 — Compare</p>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(34px,5vw,58px);line-height:1.05;margin:0 0 16px" data-en="Compare everything side by side">Compará todo lado a lado</h2>
+      <p style="max-width:660px;color:#9CB2A6;margin:0 0 32px" data-en="Filter by category, comfort level and budget.">Filtrá por categoría, nivel de confort y presupuesto.</p>
+
+      <div style="border:1px solid #22352C;border-radius:16px;padding:22px;background:#0B1512;margin-bottom:26px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px">
+        <div>
+          <p style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#7E9689;margin:0 0 12px" data-en="Category">Categoría</p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <sc-for list="{{ chipsCat }}" as="c" hint-placeholder-count="4">
+              <button onClick="{{ c.on }}" style="{{ c.style }}">{{ c.label }}</button>
+            </sc-for>
+          </div>
+        </div>
+        <div>
+          <p style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#7E9689;margin:0 0 12px" data-en="Comfort">Confort</p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <sc-for list="{{ chipsConf }}" as="c" hint-placeholder-count="4">
+              <button onClick="{{ c.on }}" style="{{ c.style }}">{{ c.label }}</button>
+            </sc-for>
+          </div>
+        </div>
+        <div>
+          <p style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#7E9689;margin:0 0 12px">{{ maxLabel }}</p>
+          <input type="range" min="300" max="2600" step="50" value="{{ fMax }}" onChange="{{ onMax }}" style="width:100%">
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:14px">
+        <sc-for list="{{ filtered }}" as="it" hint-placeholder-count="6">
+          <div style="border:1px solid #22352C;border-radius:14px;padding:22px;background:#0B1512;display:flex;flex-direction:column;gap:10px">
+            <span style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#7E9689">{{ it.cat }}</span>
+            <strong style="font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600">{{ it.name }}</strong>
+            <span style="color:#E3B872;font-size:20px;font-family:'Cormorant Garamond',serif">{{ it.priceLabel }}</span>
+            <span style="color:#9CB2A6;font-size:14px">{{ it.meta }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <p style="margin:18px 0 0;font-size:14px;color:#7E9689">{{ countLabel }}</p>
+    </section>
+
+    <section id="calculadora" style="padding:110px 0 0">
+      <p style="font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:#E3B872;margin:0 0 14px">06 — Budget</p>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(34px,5vw,58px);line-height:1.05;margin:0 0 16px" data-en="What is this trip going to cost me?">¿Cuánto me sale este viaje?</h2>
+      <p style="max-width:660px;color:#9CB2A6;margin:0 0 36px" data-en="Rough numbers in US dollars. Change the currency in the top bar; you can also edit the exchange rates.">Números gruesos en dólares. Cambiá la moneda en la barra de arriba; también podés editar las cotizaciones.</p>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px">
+        <div style="border:1px solid #22352C;border-radius:16px;padding:28px;background:#0B1512;display:flex;flex-direction:column;gap:22px">
+          <label style="display:block">
+            <span style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#7E9689;display:block;margin-bottom:8px" data-en="Accommodation">Alojamiento</span>
+            <select value="{{ aloj }}" onChange="{{ onAloj }}" style="width:100%;background:#101C17;border:1px solid #2C4238;color:#E8F0EA;font-family:Jost,sans-serif;font-size:16px;padding:12px 14px;border-radius:10px">
+              <sc-for list="{{ alojOpts }}" as="o" hint-placeholder-count="6">
+                <option value="{{ o.v }}">{{ o.l }}</option>
+              </sc-for>
+            </select>
+          </label>
+          <label style="display:block">
+            <span style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#7E9689;display:block;margin-bottom:8px" data-en="Power bank">Power bank</span>
+            <select value="{{ pb }}" onChange="{{ onPb }}" style="width:100%;background:#101C17;border:1px solid #2C4238;color:#E8F0EA;font-family:Jost,sans-serif;font-size:16px;padding:12px 14px;border-radius:10px">
+              <sc-for list="{{ pbOpts }}" as="o" hint-placeholder-count="3">
+                <option value="{{ o.v }}">{{ o.l }}</option>
+              </sc-for>
+            </select>
+          </label>
+          <label style="display:block">
+            <span style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#7E9689;display:block;margin-bottom:8px" data-en="Flights &amp; transfers (US$)">Vuelos y traslados (US$)</span>
+            <input type="number" value="{{ vuelos }}" onChange="{{ onVuelos }}" style="width:100%;background:#101C17;border:1px solid #2C4238;color:#E8F0EA;font-family:Jost,sans-serif;font-size:16px;padding:12px 14px;border-radius:10px">
+          </label>
+          <label style="display:block">
+            <span style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#7E9689;display:block;margin-bottom:8px" data-en="Food, drinks &amp; Pearls (US$)">Comida, bebida y Pearls (US$)</span>
+            <input type="number" value="{{ comida }}" onChange="{{ onComida }}" style="width:100%;background:#101C17;border:1px solid #2C4238;color:#E8F0EA;font-family:Jost,sans-serif;font-size:16px;padding:12px 14px;border-radius:10px">
+          </label>
+          <label style="display:block">
+            <span style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#7E9689;display:block;margin-bottom:8px" data-en="Other add-ons: shuttle, parking, lockers, BBQ (US$)">Otros adicionales: shuttle, parking, lockers, BBQ (US$)</span>
+            <input type="number" value="{{ extras }}" onChange="{{ onExtras }}" style="width:100%;background:#101C17;border:1px solid #2C4238;color:#E8F0EA;font-family:Jost,sans-serif;font-size:16px;padding:12px 14px;border-radius:10px">
+          </label>
+        </div>
+
+        <div style="border:1px solid #3E5A49;border-radius:16px;padding:28px;background:linear-gradient(180deg,#152219,#0B1512);display:flex;flex-direction:column;justify-content:space-between;gap:24px">
+          <div>
+            <p style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#7E9689;margin:0 0 6px" data-en="Estimated total">Total estimado</p>
+            <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(46px,7vw,76px);line-height:1;color:#E3B872;margin:0 0 6px">{{ totalLabel }}</p>
+            <p style="color:#9CB2A6;font-size:15px;margin:0">{{ totalUsdLabel }}</p>
+            <div style="margin-top:24px;display:flex;flex-direction:column;gap:9px;font-size:15px;color:#9CB2A6">
+              <sc-for list="{{ breakdown }}" as="b" hint-placeholder-count="5">
+                <div style="display:flex;justify-content:space-between;gap:16px;border-bottom:1px dashed #22352C;padding-bottom:8px">
+                  <span>{{ b.label }}</span><span style="color:#E8F0EA">{{ b.value }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+          <div>
+            <p style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#7E9689;margin:0 0 10px" data-en="Exchange rate per US$ 1">Cotización por US$ 1</p>
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <label style="flex:1;min-width:96px"><span style="font-size:12px;color:#7E9689;display:block;margin-bottom:4px">EUR</span><input type="number" step="0.01" value="{{ rEUR }}" onChange="{{ onREUR }}" style="width:100%;background:#101C17;border:1px solid #2C4238;color:#E8F0EA;font-family:Jost,sans-serif;font-size:15px;padding:9px 10px;border-radius:8px"></label>
+              <label style="flex:1;min-width:96px"><span style="font-size:12px;color:#7E9689;display:block;margin-bottom:4px">BRL</span><input type="number" step="0.01" value="{{ rBRL }}" onChange="{{ onRBRL }}" style="width:100%;background:#101C17;border:1px solid #2C4238;color:#E8F0EA;font-family:Jost,sans-serif;font-size:15px;padding:9px 10px;border-radius:8px"></label>
+              <label style="flex:1;min-width:96px"><span style="font-size:12px;color:#7E9689;display:block;margin-bottom:4px">ARS</span><input type="number" step="1" value="{{ rARS }}" onChange="{{ onRARS }}" style="width:100%;background:#101C17;border:1px solid #2C4238;color:#E8F0EA;font-family:Jost,sans-serif;font-size:15px;padding:9px 10px;border-radius:8px"></label>
+            </div>
+            <p style="margin:12px 0 0;font-size:13px;color:#5F7469" data-en="Rates are editable — update them before sharing this page.">Las cotizaciones son editables: actualizalas antes de compartir la página.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+      <div style="border:1px solid #22352C;border-radius:16px;padding:28px;background:#0B1512;margin-top:20px">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap;margin-bottom:22px">
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:600;margin:0" data-en="Flight estimator">Estimador de vuelos</h3>
+          <p style="margin:0;color:#7E9689;font-size:14px;max-width:420px" data-en="Typical economy round-trip fares to São Paulo, adjusted by season and how early you book.">Tarifas típicas de ida y vuelta en clase turista a São Paulo, ajustadas por temporada y por cuánta anticipación tenés.</p>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-bottom:24px">
+          <label style="display:block">
+            <span style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#7E9689;display:block;margin-bottom:8px" data-en="Departing from">Salida desde</span>
+            <select value="{{ flOrigin }}" onChange="{{ onFlOrigin }}" style="width:100%;background:#101C17;border:1px solid #2C4238;color:#E8F0EA;font-family:Jost,sans-serif;font-size:16px;padding:12px 14px;border-radius:10px">
+              <sc-for list="{{ originOpts }}" as="o" hint-placeholder-count="8">
+                <option value="{{ o.v }}">{{ o.l }}</option>
+              </sc-for>
+            </select>
+          </label>
+          <label style="display:block">
+            <span style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#7E9689;display:block;margin-bottom:8px" data-en="Arriving at">Llegada a</span>
+            <select value="{{ flDest }}" onChange="{{ onFlDest }}" style="width:100%;background:#101C17;border:1px solid #2C4238;color:#E8F0EA;font-family:Jost,sans-serif;font-size:16px;padding:12px 14px;border-radius:10px">
+              <option value="GRU">São Paulo · Guarulhos (GRU)</option>
+              <option value="VCP">Campinas · Viracopos (VCP)</option>
+            </select>
+          </label>
+          <label style="display:block">
+            <span style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#7E9689;display:block;margin-bottom:8px" data-en="Outbound">Ida</span>
+            <input type="date" value="{{ flOut }}" onChange="{{ onFlOut }}" style="width:100%;background:#101C17;border:1px solid #2C4238;color:#E8F0EA;font-family:Jost,sans-serif;font-size:16px;padding:11px 14px;border-radius:10px">
+          </label>
+          <label style="display:block">
+            <span style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#7E9689;display:block;margin-bottom:8px" data-en="Return">Vuelta</span>
+            <input type="date" value="{{ flRet }}" onChange="{{ onFlRet }}" style="width:100%;background:#101C17;border:1px solid #2C4238;color:#E8F0EA;font-family:Jost,sans-serif;font-size:16px;padding:11px 14px;border-radius:10px">
+          </label>
+          <label style="display:block">
+            <span style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#7E9689;display:block;margin-bottom:8px" data-en="Passengers">Pasajeros</span>
+            <input type="number" min="1" max="12" value="{{ flPax }}" onChange="{{ onFlPax }}" style="width:100%;background:#101C17;border:1px solid #2C4238;color:#E8F0EA;font-family:Jost,sans-serif;font-size:16px;padding:12px 14px;border-radius:10px">
+          </label>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;align-items:end;border-top:1px solid #22352C;padding-top:24px">
+          <div>
+            <p style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#7E9689;margin:0 0 6px" data-en="Per person, round trip">Por persona, ida y vuelta</p>
+            <p style="font-family:'Cormorant Garamond',serif;font-size:40px;line-height:1;color:#E3B872;margin:0">{{ flPerPax }}</p>
+            <p style="margin:6px 0 0;color:#7E9689;font-size:14px">{{ flRange }}</p>
+          </div>
+          <div>
+            <p style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#7E9689;margin:0 0 6px" data-en="Group total">Total del grupo</p>
+            <p style="font-family:'Cormorant Garamond',serif;font-size:40px;line-height:1;color:#E8F0EA;margin:0">{{ flTotal }}</p>
+            <p style="margin:6px 0 0;color:#7E9689;font-size:14px">{{ flNote }}</p>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <button onClick="{{ useFlights }}" style="background:#E3B872;color:#0B1512;border:none;font-family:Jost,sans-serif;font-size:14px;letter-spacing:.08em;padding:13px 18px;border-radius:999px;cursor:pointer" data-en="Use in my budget">Usar en mi presupuesto</button>
+            <div style="display:flex;gap:14px;font-size:14px">
+              <a href="{{ gflightsUrl }}" target="_blank" rel="noopener">Google Flights ↗</a>
+              <a href="{{ skyUrl }}" target="_blank" rel="noopener">Skyscanner ↗</a>
+            </div>
+          </div>
+        </div>
+        <p style="margin:18px 0 0;font-size:13px;color:#5F7469" data-en="Estimate based on typical economy fares observed for these routes; it is not a live quote. Use the links to check the real price for your dates.">Estimación armada con tarifas típicas de clase turista observadas en estas rutas: no es una cotización en vivo. Usá los links para chequear el precio real de tus fechas.</p>
+      </div>
+
+    <section id="fechas" style="padding:110px 0 0">
+      <p style="font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:#E3B872;margin:0 0 14px">07 — Calendar</p>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(34px,5vw,58px);line-height:1.05;margin:0 0 16px" data-en="How the sale works">Cómo funciona la venta</h2>
+      <p style="max-width:660px;color:#9CB2A6;margin:0 0 44px" data-en="The order matters more than the speed of your internet. This is the sequence.">Importa más el orden que la velocidad de tu internet. Esta es la secuencia.</p>
+
+      <div style="display:flex;flex-direction:column">
+        <div style="display:grid;grid-template-columns:150px 1fr;gap:26px;padding:26px 0;border-top:1px solid #22352C">
+          <span style="color:#E3B872;font-size:13px;letter-spacing:.16em;text-transform:uppercase" data-en="Before everything">Antes de todo</span>
+          <div><strong style="font-weight:500;display:block;margin-bottom:4px" data-en="Create your account and register">Creá tu cuenta y registrate</strong><span style="color:#9CB2A6" data-en="One account per person, with real personal data. Without registration you cannot buy — not even from a friend's account.">Una cuenta por persona, con datos personales reales. Sin registro no podés comprar, ni siquiera desde la cuenta de un amigo.</span></div>
+        </div>
+        <div style="display:grid;grid-template-columns:150px 1fr;gap:26px;padding:26px 0;border-top:1px solid #22352C">
+          <span style="color:#E3B872;font-size:13px;letter-spacing:.16em;text-transform:uppercase" data-en="Group">Grupo</span>
+          <div><strong style="font-weight:500;display:block;margin-bottom:4px" data-en="Agree the plan with your friends">Acordá el plan con tus amigos</strong><span style="color:#9CB2A6" data-en="Decide beforehand who buys, for how many people and which package. During the sale there is no time to discuss it.">Definan antes quién compra, para cuántas personas y qué paquete. Durante la venta no hay tiempo de discutirlo.</span></div>
+        </div>
+        <div style="display:grid;grid-template-columns:150px 1fr;gap:26px;padding:26px 0;border-top:1px solid #22352C">
+          <span style="color:#E3B872;font-size:13px;letter-spacing:.16em;text-transform:uppercase" data-en="Sale day">Día de venta</span>
+          <div><strong style="font-weight:500;display:block;margin-bottom:4px" data-en="Waiting room, then a countdown">Sala de espera y después el reloj</strong><span style="color:#9CB2A6" data-en="You enter a virtual queue and get a limited window to complete the purchase. Have your card details ready and do not refresh the page.">Entrás a una fila virtual y tenés una ventana limitada para completar la compra. Tené los datos de la tarjeta a mano y no refresques la página.</span></div>
+        </div>
+        <div style="display:grid;grid-template-columns:150px 1fr;gap:26px;padding:26px 0;border-top:1px solid #22352C;border-bottom:1px solid #22352C">
+          <span style="color:#E3B872;font-size:13px;letter-spacing:.16em;text-transform:uppercase" data-en="After">Después</span>
+          <div><strong style="font-weight:500;display:block;margin-bottom:4px" data-en="Personalise and add extras">Personalización y adicionales</strong><span style="color:#9CB2A6" data-en="Each ticket is assigned to a named person. Then the add-ons open: shuttle, parking, lockers, BBQ, breakfast, power bank.">Cada entrada se asigna a una persona con nombre y apellido. Después abren los adicionales: shuttle, parking, lockers, BBQ, desayuno, power bank.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tips" style="padding:110px 0 0">
+      <p style="font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:#E3B872;margin:0 0 14px">08 — Tips</p>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(34px,5vw,58px);line-height:1.05;margin:0 0 44px" data-en="If it is your first time">Si es tu primera vez</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2px;background:#1E2F27;border:1px solid #1E2F27;border-radius:16px;overflow:hidden">
+        <div style="background:#0B1512;padding:28px 24px"><h3 style="font-size:17px;font-weight:500;margin:0 0 8px" data-en="Pearls, not cash">Pearls, no efectivo</h3><p style="margin:0;color:#9CB2A6;font-size:15px" data-en="Inside the festival you pay with Pearls loaded onto your bracelet. Top up in advance and check the refund window for leftovers.">Adentro se paga con Pearls cargadas en la pulsera. Cargá con anticipación y fijate hasta cuándo se puede pedir el reintegro del saldo.</p></div>
+        <div style="background:#0B1512;padding:28px 24px"><h3 style="font-size:17px;font-weight:500;margin:0 0 8px" data-en="Camping means bringing gear">Camping es llevar cosas</h3><p style="margin:0;color:#9CB2A6;font-size:15px" data-en="Magnificent Greens is just a plot: tent, mattress and everything else is on you. Vida Nova and Easy Tent arrive pitched.">Magnificent Greens es solo el espacio: carpa, colchón y todo lo demás corre por tu cuenta. Vida Nova y Easy Tent ya vienen armadas.</p></div>
+        <div style="background:#0B1512;padding:28px 24px"><h3 style="font-size:17px;font-weight:500;margin:0 0 8px" data-en="Battery runs out on day one">La batería se muere el día uno</h3><p style="margin:0;color:#9CB2A6;font-size:15px" data-en="Between photos, maps and meeting points the phone dies fast. The official power bank with unlimited swaps is worth it.">Entre fotos, mapas y puntos de encuentro el celular se apaga rápido. La power bank oficial con intercambios ilimitados vale la pena.</p></div>
+        <div style="background:#0B1512;padding:28px 24px"><h3 style="font-size:17px;font-weight:500;margin:0 0 8px" data-en="Book the shuttle early">Reservá el shuttle temprano</h3><p style="margin:0;color:#9CB2A6;font-size:15px" data-en="Getting out at 3am on your own is the worst part of the night. The official bus and parking voucher sell out.">Salir a las 3 de la mañana por tu cuenta es la peor parte de la noche. El bus oficial y el parking se agotan.</p></div>
+        <div style="background:#0B1512;padding:28px 24px"><h3 style="font-size:17px;font-weight:500;margin:0 0 8px" data-en="Agree a meeting point">Punto de encuentro fijo</h3><p style="margin:0;color:#9CB2A6;font-size:15px" data-en="Signal drops with 100k people around. Pick a visible landmark and a time, and stick to it.">Con 100 mil personas alrededor la señal desaparece. Elijan un punto visible y un horario, y respétenlo.</p></div>
+        <div style="background:#0B1512;padding:28px 24px"><h3 style="font-size:17px;font-weight:500;margin:0 0 8px" data-en="Thursday counts">El jueves cuenta</h3><p style="margin:0;color:#9CB2A6;font-size:15px" data-en="If you stay at DreamVille you get The Gathering, the Thursday welcome party. Arrive early to set up before dark.">Si te quedás en DreamVille tenés The Gathering, la fiesta de bienvenida del jueves. Llegá temprano para armar todo antes de que oscurezca.</p></div>
+      </div>
+    </section>
+
+    <section style="padding:110px 0 120px">
+      <div style="position:relative;border-radius:20px;overflow:hidden;min-height:320px;display:flex;align-items:center">
+        <div style="position:absolute;inset:0"><image-slot id="tml-closing" shape="rect" fit="cover" src="./assets/cierre-grupo.png" placeholder="Foto de cierre"></image-slot></div>
+        <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,15,12,.92) 0%,rgba(8,15,12,.72) 45%,rgba(8,15,12,.35) 100%);pointer-events:none"></div>
+        <div style="position:relative;padding:56px 40px;max-width:720px">
+          <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(30px,4.4vw,50px);line-height:1.05;margin:0 0 14px" data-en="Nobody buys everything. Buy what you will actually use.">Nadie compra todo. Comprá lo que realmente vas a usar.</h2>
+          <p style="color:#C3D3C9;margin:0" data-en="Ticket + accommodation are the decision. Everything else can wait until the add-ons open — except the shuttle and parking.">Entrada + alojamiento es la decisión importante. El resto puede esperar a que abran los adicionales, salvo el shuttle y el parking.</p>
+        </div>
+      </div>
+      <p style="margin:34px 0 0;font-size:13px;color:#5F7469;text-align:center" data-en="Unofficial guide made by fans. Always confirm prices and dates on the official Tomorrowland channels.">Guía no oficial hecha por fans. Confirmá siempre precios y fechas en los canales oficiales de Tomorrowland.</p>
+    </section>
+
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+const SYM = { USD: 'US$', EUR: '€', BRL: 'R$', ARS: 'AR$' };
+const ITEMS = [
+  { cat: 'Solo festival', catEn: 'Festival only', key: 'fest', name: 'Day Pass', usd: null, conf: 'general', meta: '1 día · acceso general', metaEn: '1 day · general access' },
+  { cat: 'Solo festival', catEn: 'Festival only', key: 'fest', name: 'Day Confort Pass', usd: null, conf: 'confort', meta: '1 día · áreas VIP', metaEn: '1 day · VIP areas' },
+  { cat: 'Solo festival', catEn: 'Festival only', key: 'fest', name: 'Full Madness Pass', usd: null, conf: 'general', meta: '3 días · acceso general', metaEn: '3 days · general access' },
+  { cat: 'Solo festival', catEn: 'Festival only', key: 'fest', name: 'Full Madness Confort', usd: null, conf: 'confort', meta: '3 días · áreas VIP', metaEn: '3 days · VIP areas' },
+  { cat: 'DreamVille', catEn: 'DreamVille', key: 'dv', name: 'Magnificent Greens', usd: 510, conf: 'general', meta: '1 pers. · llevás tu carpa · incluye Full Madness', metaEn: '1 person · bring your tent · Full Madness included' },
+  { cat: 'DreamVille', catEn: 'DreamVille', key: 'dv', name: 'Vida Nova', usd: 1300, conf: 'general', meta: '2 pers. · carpa preseteada · incluye Full Madness', metaEn: '2 people · pre-pitched tent · Full Madness included' },
+  { cat: 'DreamVille', catEn: 'DreamVille', key: 'dv', name: 'Easy Tent', usd: 1450, conf: 'confort', meta: '2 pers. · carpa oficial armada', metaEn: '2 people · official tent, pitched' },
+  { cat: 'DreamVille', catEn: 'DreamVille', key: 'dv', name: 'Spectacular Easy Tent', usd: 1550, conf: 'confort', meta: '2 pers. · carpa oficial mejor ubicada', metaEn: '2 people · official tent, better located' },
+  { cat: 'DreamVille', catEn: 'DreamVille', key: 'dv', name: 'Área Mística', usd: 2000, conf: 'lujo', meta: 'Astera · Luna · Grande · camas reales', metaEn: 'Astera · Luna · Grande · real beds' },
+  { cat: 'Global Journey', catEn: 'Global Journey', key: 'gj', name: 'Flight & Bus Packages', usd: null, conf: 'general', meta: 'Vuelo o bus + alojamiento + Full Madness', metaEn: 'Flight or bus + stay + Full Madness' },
+  { cat: 'Global Journey', catEn: 'Global Journey', key: 'gj', name: 'Hotel Packages', usd: null, conf: 'confort', meta: 'Hotel en SP o Campinas + shuttle diario', metaEn: 'Hotel in SP or Campinas + daily shuttle' },
+  { cat: 'Global Journey', catEn: 'Global Journey', key: 'gj', name: 'Experience Packages', usd: null, conf: 'lujo', meta: 'Tour por Brasil + experiencia Tomorrowland', metaEn: 'Tour around Brazil + Tomorrowland experience' }
+];
+
+// Base round-trip economy fare to São Paulo (GRU) in USD, from typical observed fares.
+const ORIGINS = [
+  { v: 'EZE', l: 'Buenos Aires (EZE)', usd: 420 },
+  { v: 'AEP', l: 'Buenos Aires · Aeroparque (AEP)', usd: 450 },
+  { v: 'COR', l: 'Córdoba (COR)', usd: 520 },
+  { v: 'ROS', l: 'Rosario (ROS)', usd: 540 },
+  { v: 'MDZ', l: 'Mendoza (MDZ)', usd: 560 },
+  { v: 'MVD', l: 'Montevideo (MVD)', usd: 400 },
+  { v: 'SCL', l: 'Santiago de Chile (SCL)', usd: 400 },
+  { v: 'ASU', l: 'Asunción (ASU)', usd: 380 },
+  { v: 'LIM', l: 'Lima (LIM)', usd: 520 },
+  { v: 'BOG', l: 'Bogotá (BOG)', usd: 560 },
+  { v: 'MEX', l: 'Ciudad de México (MEX)', usd: 700 },
+  { v: 'MIA', l: 'Miami (MIA)', usd: 750 },
+  { v: 'JFK', l: 'Nueva York (JFK)', usd: 800 },
+  { v: 'MAD', l: 'Madrid (MAD)', usd: 800 },
+  { v: 'LIS', l: 'Lisboa (LIS)', usd: 750 },
+  { v: 'GIG', l: 'Río de Janeiro (GIG)', usd: 120 },
+  { v: 'CNF', l: 'Belo Horizonte (CNF)', usd: 110 },
+  { v: 'BSB', l: 'Brasília (BSB)', usd: 140 },
+  { v: 'POA', l: 'Porto Alegre (POA)', usd: 130 },
+  { v: 'CWB', l: 'Curitiba (CWB)', usd: 110 },
+  { v: 'SSA', l: 'Salvador (SSA)', usd: 160 },
+  { v: 'REC', l: 'Recife (REC)', usd: 175 },
+  { v: 'FOR', l: 'Fortaleza (FOR)', usd: 180 },
+  { v: 'MAO', l: 'Manaos (MAO)', usd: 200 }
+];
+const SEASON = [1.25, 1.05, 0.9, 0.9, 0.85, 0.9, 1.3, 0.95, 0.95, 1.05, 1.1, 1.35];
+const ymd = (d) => (d || '').replace(/-/g, '').slice(2);
+
+class Component extends DCLogic {
+  state = {
+    lang: 'es', cur: 'USD',
+    rates: { USD: 1, EUR: 0.92, BRL: 5.45, ARS: 1350 },
+    fCat: 'all', fConf: 'all', fMax: 2600,
+    aloj: '1300', pb: '0', vuelos: 1200, comida: 400, extras: 200,
+    flOrigin: 'EZE', flDest: 'GRU', flOut: '2027-10-07', flRet: '2027-10-12', flPax: 2
+  };
+
+  flight() {
+    const s = this.state;
+    const o = ORIGINS.find(x => x.v === s.flOrigin) || ORIGINS[0];
+    const out = new Date(s.flOut + 'T12:00:00');
+    const valid = !isNaN(out.getTime());
+    const season = valid ? SEASON[out.getMonth()] : 1;
+    const days = valid ? (out - new Date()) / 86400000 : 200;
+    const lead = days < 30 ? 1.35 : days < 90 ? 1.12 : days < 180 ? 1 : 0.92;
+    const dest = s.flDest === 'VCP' ? (o.usd > 300 ? 1.08 : 0.95) : 1;
+    const pax = Math.max(1, Math.min(12, parseInt(s.flPax) || 1));
+    const per = Math.round(o.usd * season * lead * dest);
+    return { per, pax, total: per * pax, low: Math.round(per * 0.82), high: Math.round(per * 1.22), origin: o, valid };
+  }
+
+  get root() { return this.rootRef && this.rootRef.current; }
+
+  componentDidMount() { this.sync(); }
+  componentDidUpdate() { this.sync(); }
+
+  sync() {
+    const r = this.root;
+    if (!r) return;
+    const en = this.state.lang === 'en';
+    r.querySelectorAll('[data-en]').forEach(el => {
+      if (el.__es === undefined) el.__es = el.innerHTML;
+      const want = en ? el.getAttribute('data-en') : el.__es;
+      if (el.innerHTML !== want) el.innerHTML = want;
+    });
+    r.querySelectorAll('[data-usd]').forEach(el => {
+      const v = parseFloat(el.getAttribute('data-usd'));
+      const want = this.money(v) + (el.getAttribute('data-suffix') || '');
+      if (el.textContent !== want) el.textContent = want;
+    });
+  }
+
+  money(usd) {
+    const c = this.state.cur;
+    const v = usd * (parseFloat(this.state.rates[c]) || 1);
+    return SYM[c] + ' ' + Math.round(v).toLocaleString('es-AR');
+  }
+
+  chip(active, label, on) {
+    return {
+      label, on,
+      style: 'background:' + (active ? '#E3B872' : 'transparent') + ';color:' + (active ? '#0B1512' : '#9CB2A6') +
+        ';border:1px solid ' + (active ? '#E3B872' : '#2C4238') + ';font-family:Jost,sans-serif;font-size:13px;padding:8px 14px;border-radius:999px;cursor:pointer'
+    };
+  }
+
+  renderVals() {
+    const s = this.state, en = s.lang === 'en';
+    this.rootRef = this.rootRef || React.createRef();
+    const fl = this.flight();
+
+    const cats = [['all', en ? 'All' : 'Todas'], ['fest', en ? 'Festival only' : 'Solo festival'], ['dv', 'DreamVille'], ['gj', 'Global Journey']];
+    const confs = [['all', en ? 'All' : 'Todos'], ['general', en ? 'General' : 'General'], ['confort', 'Confort'], ['lujo', en ? 'Luxury' : 'Lujo']];
+
+    const filtered = ITEMS.filter(i =>
+      (s.fCat === 'all' || i.key === s.fCat) &&
+      (s.fConf === 'all' || i.conf === s.fConf) &&
+      (i.usd === null || i.usd <= s.fMax)
+    ).map(i => ({
+      cat: en ? i.catEn : i.cat,
+      name: i.name,
+      meta: en ? i.metaEn : i.meta,
+      priceLabel: i.usd === null ? (en ? 'Price TBC' : 'Precio a confirmar') : this.money(i.usd) + (i.usd === 2000 ? '+' : '')
+    }));
+
+    const aloj = parseFloat(s.aloj) || 0;
+    const pb = parseFloat(s.pb) || 0;
+    const vuelos = parseFloat(s.vuelos) || 0;
+    const comida = parseFloat(s.comida) || 0;
+    const extras = parseFloat(s.extras) || 0;
+    const total = aloj + pb + vuelos + comida + extras;
+
+    const bd = [
+      [en ? 'Accommodation + pass' : 'Alojamiento + pase', aloj],
+      [en ? 'Flights & transfers' : 'Vuelos y traslados', vuelos],
+      [en ? 'Food, drinks & Pearls' : 'Comida, bebida y Pearls', comida],
+      [en ? 'Other add-ons' : 'Otros adicionales', extras],
+      [en ? 'Power bank' : 'Power bank', pb]
+    ].filter(b => b[1] > 0).map(b => ({ label: b[0], value: this.money(b[1]) }));
+
+    return {
+      rootRef: this.rootRef,
+      langLabel: en ? 'ES' : 'EN',
+      toggleLang: () => this.setState({ lang: en ? 'es' : 'en' }),
+      cur: s.cur,
+      onCur: (e) => this.setState({ cur: e.target.value }),
+
+      chipsCat: cats.map(([k, l]) => this.chip(s.fCat === k, l, () => this.setState({ fCat: k }))),
+      chipsConf: confs.map(([k, l]) => this.chip(s.fConf === k, l, () => this.setState({ fConf: k }))),
+      fMax: s.fMax,
+      onMax: (e) => this.setState({ fMax: parseFloat(e.target.value) }),
+      maxLabel: (en ? 'Max budget · ' : 'Presupuesto máx. · ') + this.money(s.fMax),
+      filtered,
+      countLabel: filtered.length + (en ? ' options shown' : ' opciones a la vista'),
+
+      alojOpts: [
+        { v: '0', l: en ? 'No DreamVille (hotel or own place)' : 'Sin DreamVille (hotel o casa aparte)' },
+        { v: '510', l: 'Magnificent Greens · 1 ' + (en ? 'pers.' : 'pers.') + ' · ' + this.money(510) },
+        { v: '1300', l: 'Vida Nova · 2 pers. · ' + this.money(1300) },
+        { v: '1450', l: 'Easy Tent · 2 pers. · ' + this.money(1450) },
+        { v: '1550', l: 'Spectacular Easy Tent · 2 pers. · ' + this.money(1550) },
+        { v: '2000', l: 'Área Mística · ' + (en ? 'from ' : 'desde ') + this.money(2000) }
+      ],
+      pbOpts: [
+        { v: '0', l: en ? 'Not renting one' : 'No alquilo' },
+        { v: '31', l: '5.000 mAh · ' + this.money(31) },
+        { v: '45', l: '10.000 mAh · ' + this.money(45) }
+      ],
+      aloj: s.aloj, onAloj: (e) => this.setState({ aloj: e.target.value }),
+      pb: s.pb, onPb: (e) => this.setState({ pb: e.target.value }),
+      vuelos: s.vuelos, onVuelos: (e) => this.setState({ vuelos: e.target.value }),
+      comida: s.comida, onComida: (e) => this.setState({ comida: e.target.value }),
+      extras: s.extras, onExtras: (e) => this.setState({ extras: e.target.value }),
+      totalLabel: this.money(total),
+      totalUsdLabel: s.cur === 'USD' ? (en ? 'per group, whole trip' : 'por grupo, viaje completo') : 'US$ ' + Math.round(total).toLocaleString('es-AR'),
+      breakdown: bd,
+
+      originOpts: ORIGINS.map(o => ({ v: o.v, l: o.l })),
+      flOrigin: s.flOrigin, onFlOrigin: (e) => this.setState({ flOrigin: e.target.value }),
+      flDest: s.flDest, onFlDest: (e) => this.setState({ flDest: e.target.value }),
+      flOut: s.flOut, onFlOut: (e) => this.setState({ flOut: e.target.value }),
+      flRet: s.flRet, onFlRet: (e) => this.setState({ flRet: e.target.value }),
+      flPax: s.flPax, onFlPax: (e) => this.setState({ flPax: e.target.value }),
+      flPerPax: this.money(fl.per),
+      flRange: (en ? 'Usual range ' : 'Rango habitual ') + this.money(fl.low) + ' – ' + this.money(fl.high),
+      flTotal: this.money(fl.total),
+      flNote: fl.pax + (en ? ' passenger(s), economy, round trip' : ' pasajero/s, turista, ida y vuelta'),
+      useFlights: () => this.setState({ vuelos: fl.total }),
+      gflightsUrl: 'https://www.google.com/travel/flights?q=' + encodeURIComponent('Flights to ' + s.flDest + ' from ' + s.flOrigin + ' on ' + s.flOut + ' through ' + s.flRet),
+      skyUrl: 'https://www.skyscanner.net/transport/flights/' + s.flOrigin.toLowerCase() + '/' + s.flDest.toLowerCase() + '/' + ymd(s.flOut) + '/' + ymd(s.flRet) + '/?adults=' + fl.pax,
+
+      rEUR: s.rates.EUR, onREUR: (e) => this.setState({ rates: { ...s.rates, EUR: e.target.value } }),
+      rBRL: s.rates.BRL, onRBRL: (e) => this.setState({ rates: { ...s.rates, BRL: e.target.value } }),
+      rARS: s.rates.ARS, onRARS: (e) => this.setState({ rates: { ...s.rates, ARS: e.target.value } })
+    };
+  }
+}
+
+</script>
+</body>
+</html>
