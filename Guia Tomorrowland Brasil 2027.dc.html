@@ -688,8 +688,29 @@ class Component extends DCLogic {
 
   get root() { return this.rootRef && this.rootRef.current; }
 
-  componentDidMount() { this.sync(); }
+  componentDidMount() { this.sync(); this.setupVideoAutoplay(); }
   componentDidUpdate() { this.sync(); }
+
+  setupVideoAutoplay() {
+    const r = this.root;
+    if (!r || this.__videoObserverSet) return;
+    this.__videoObserverSet = true;
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const vid = entry.target;
+        if (entry.isIntersecting) {
+          vid.muted = true;
+          if (vid.paused) vid.play().catch(() => {});
+        } else if (!vid.paused) {
+          vid.pause();
+        }
+      });
+    }, { threshold: 0.4 });
+    r.querySelectorAll('video[loop]').forEach((vid) => {
+      vid.muted = true;
+      io.observe(vid);
+    });
+  }
 
   sync() {
     const r = this.root;
@@ -704,10 +725,6 @@ class Component extends DCLogic {
       const v = parseFloat(el.getAttribute('data-usd'));
       const want = this.money(v) + (el.getAttribute('data-suffix') || '');
       if (el.textContent !== want) el.textContent = want;
-    });
-    r.querySelectorAll('video[loop]').forEach(vid => {
-      vid.muted = true;
-      if (vid.paused) vid.play().catch(() => {});
     });
   }
 
