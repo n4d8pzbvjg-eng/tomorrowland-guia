@@ -264,9 +264,10 @@
         <div>
           <h3 style="font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:#E3B872;margin:0 0 18px;padding-bottom:12px;border-bottom:1px solid #22352C" data-en="Transport">Transporte</h3>
           <div style="display:flex;flex-direction:column;gap:18px">
-            <div><strong style="font-weight:500;display:block">Tomorrowland Shuttle</strong><span style="color:#9CB2A6;font-size:15px" data-en="Official round-trip buses from strategic pick-up points (São Paulo, Campinas, Barueri, São Bernardo, GRU airport). Saves you the arrival and exit traffic.">Buses oficiales ida y vuelta desde puntos estratégicos (São Paulo, Campinas, Barueri, São Bernardo, aeropuerto GRU). Te evitan el tráfico de llegada y salida.</span></div>
-            <div><strong style="font-weight:500;display:block">DreamVille Shuttle</strong><span style="color:#9CB2A6;font-size:15px" data-en="Transport designed for campers, with luggage space. Leaves Thursday for arrival and returns Monday morning.">Transporte pensado para quienes se alojan en DreamVille, con espacio para equipaje. Sale el jueves para la llegada y regresa el lunes a la mañana.</span></div>
-            <div><strong style="font-weight:500;display:block">Parking Voucher</strong><span style="color:#9CB2A6;font-size:15px" data-en="Car/motorbike parking at Parque Maeda, per day or for the whole weekend if you stay at DreamVille. Buy it well in advance.">Estacionamiento de auto o moto en el Parque Maeda, por día o por todo el fin de semana si te quedás en DreamVille. Es indispensable comprarlo con anticipación.</span></div>
+            <div><strong style="font-weight:500;display:block">Tomorrowland Shuttle <span style="color:#E3B872;font-weight:500">· US$ 50–100</span></strong><span style="color:#9CB2A6;font-size:15px" data-en="Official round-trip buses from strategic pick-up points (São Paulo, Campinas, Barueri, São Bernardo, GRU airport). Price depends on the departure point. Saves you the arrival and exit traffic.">Buses oficiales ida y vuelta desde puntos estratégicos (São Paulo, Campinas, Barueri, São Bernardo, aeropuerto GRU). El precio depende de desde dónde salga el bus. Te evitan el tráfico de llegada y salida.</span></div>
+            <div><strong style="font-weight:500;display:block">DreamVille Shuttle <span style="color:#E3B872;font-weight:500">· US$ 40</span></strong><span style="color:#9CB2A6;font-size:15px" data-en="Transport designed for campers, with luggage space. Only leaves from two points: Novotel Center Norte and Guarulhos airport. Leaves Thursday for arrival and returns Monday morning.">Transporte pensado para quienes se alojan en DreamVille, con espacio para equipaje. Sale solo desde dos puntos: Novotel Center Norte y el aeropuerto de Guarulhos. Sale el jueves para la llegada y regresa el lunes a la mañana.</span></div>
+            <div><strong style="font-weight:500;display:block">Parking Voucher — día de festival <span style="color:#E3B872;font-weight:500">· US$ 30–90</span></strong><span style="color:#9CB2A6;font-size:15px" data-en="Car/motorbike/bus parking at Parque Maeda, per day. Price depends on the vehicle: motorbike, car or bus. Buy it well in advance.">Estacionamiento en el Parque Maeda por día. El precio depende del vehículo: moto, auto o autobús. Es indispensable comprarlo con anticipación.</span></div>
+            <div><strong style="font-weight:500;display:block">Parking Voucher — DreamVille <span style="color:#E3B872;font-weight:500">· US$ 120</span></strong><span style="color:#9CB2A6;font-size:15px" data-en="Valid from Thursday to Monday for the whole DreamVille stay.">Válido desde el jueves hasta el lunes, para toda la estadía en DreamVille.</span></div>
           </div>
         </div>
 
@@ -282,7 +283,8 @@
           <h3 style="font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:#E3B872;margin:0 0 18px;padding-bottom:12px;border-bottom:1px solid #22352C" data-en="Welcome packs &amp; extras">Packs y extras</h3>
           <div style="display:flex;flex-direction:column;gap:18px">
             <div><strong style="font-weight:500;display:block">Welcome Cold Beer Pack</strong><span style="color:#9CB2A6;font-size:15px" data-en="DreamVille only: 12 cold beers + an official Tomorrowland cooler bag with ice, to pick up as soon as you arrive at the campsite.">Exclusivo DreamVille: pack de 12 cervezas heladas + bolsa térmica oficial de Tomorrowland con hielo, para retirar apenas llegás al camping mientras armás la carpa.</span></div>
-            <div><strong style="font-weight:500;display:block">Lockers (casilleros)</strong><span style="color:#9CB2A6;font-size:15px" data-en="Different sizes, with key or code, for the day or the whole weekend. Available in the general festival area and inside DreamVille.">De distintos tamaños, con llave o código, por el día o por todo el fin de semana. Hay en el área general del festival y en DreamVille.</span></div>
+            <div><strong style="font-weight:500;display:block">Lockers — día de festival <span style="color:#E3B872;font-weight:500">· US$ 15–20</span></strong><span style="color:#9CB2A6;font-size:15px" data-en="With key or code, in the general festival area. Price depends on size.">Con llave o código, en el área general del festival. El precio depende del tamaño.</span></div>
+            <div><strong style="font-weight:500;display:block">Lockers — DreamVille <span style="color:#E3B872;font-weight:500">· US$ 80–100</span></strong><span style="color:#9CB2A6;font-size:15px" data-en="Available from Thursday to Monday. Price depends on size.">Disponibles de jueves a lunes. El precio depende del tamaño.</span></div>
           </div>
         </div>
 
@@ -357,6 +359,17 @@
             </select>
           </label>
           <label style="display:block">
+            <span style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#7E9689;display:block;margin-bottom:8px" data-en="Festival ticket">Entrada al festival</span>
+            <select value="{{ entrada }}" onChange="{{ onEntrada }}" style="width:100%;background:#101C17;border:1px solid #2C4238;color:#E8F0EA;font-family:Jost,sans-serif;font-size:16px;padding:12px 14px;border-radius:10px">
+              <sc-for list="{{ entradaOpts }}" as="o" hint-placeholder-count="6">
+                <option value="{{ o.v }}">{{ o.l }}</option>
+              </sc-for>
+            </select>
+            <sc-if value="{{ entradaIncluded }}">
+              <span style="display:block;margin-top:6px;font-size:12px;color:#5F7469" data-en="Not added to the total — it's already included in your DreamVille package.">No se suma al total: ya está incluida en tu paquete de DreamVille.</span>
+            </sc-if>
+          </label>
+          <label style="display:block">
             <span style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#7E9689;display:block;margin-bottom:8px" data-en="Power bank">Power bank</span>
             <select value="{{ pb }}" onChange="{{ onPb }}" style="width:100%;background:#101C17;border:1px solid #2C4238;color:#E8F0EA;font-family:Jost,sans-serif;font-size:16px;padding:12px 14px;border-radius:10px">
               <sc-for list="{{ pbOpts }}" as="o" hint-placeholder-count="3">
@@ -373,7 +386,31 @@
             <input type="number" value="{{ comida }}" onChange="{{ onComida }}" style="width:100%;background:#101C17;border:1px solid #2C4238;color:#E8F0EA;font-family:Jost,sans-serif;font-size:16px;padding:12px 14px;border-radius:10px">
           </label>
           <label style="display:block">
-            <span style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#7E9689;display:block;margin-bottom:8px" data-en="Other add-ons: shuttle, parking, lockers, BBQ (US$)">Otros adicionales: shuttle, parking, lockers, BBQ (US$)</span>
+            <span style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#7E9689;display:block;margin-bottom:8px" data-en="Shuttle">Shuttle</span>
+            <select value="{{ shuttle }}" onChange="{{ onShuttle }}" style="width:100%;background:#101C17;border:1px solid #2C4238;color:#E8F0EA;font-family:Jost,sans-serif;font-size:16px;padding:12px 14px;border-radius:10px">
+              <sc-for list="{{ shuttleOpts }}" as="o" hint-placeholder-count="3">
+                <option value="{{ o.v }}">{{ o.l }}</option>
+              </sc-for>
+            </select>
+          </label>
+          <label style="display:block">
+            <span style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#7E9689;display:block;margin-bottom:8px" data-en="Parking">Parking</span>
+            <select value="{{ parking }}" onChange="{{ onParking }}" style="width:100%;background:#101C17;border:1px solid #2C4238;color:#E8F0EA;font-family:Jost,sans-serif;font-size:16px;padding:12px 14px;border-radius:10px">
+              <sc-for list="{{ parkingOpts }}" as="o" hint-placeholder-count="5">
+                <option value="{{ o.v }}">{{ o.l }}</option>
+              </sc-for>
+            </select>
+          </label>
+          <label style="display:block">
+            <span style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#7E9689;display:block;margin-bottom:8px" data-en="Lockers">Lockers</span>
+            <select value="{{ lockers }}" onChange="{{ onLockers }}" style="width:100%;background:#101C17;border:1px solid #2C4238;color:#E8F0EA;font-family:Jost,sans-serif;font-size:16px;padding:12px 14px;border-radius:10px">
+              <sc-for list="{{ lockersOpts }}" as="o" hint-placeholder-count="5">
+                <option value="{{ o.v }}">{{ o.l }}</option>
+              </sc-for>
+            </select>
+          </label>
+          <label style="display:block">
+            <span style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#7E9689;display:block;margin-bottom:8px" data-en="Other add-ons: BBQ, breakfast, etc. (US$)">Otros adicionales: BBQ, desayuno, etc. (US$)</span>
             <input type="number" value="{{ extras }}" onChange="{{ onExtras }}" style="width:100%;background:#101C17;border:1px solid #2C4238;color:#E8F0EA;font-family:Jost,sans-serif;font-size:16px;padding:12px 14px;border-radius:10px">
           </label>
         </div>
@@ -575,6 +612,7 @@ class Component extends DCLogic {
     rates: { USD: 1, EUR: 0.92, BRL: 5.45, ARS: 1350 },
     fCat: 'all', fConf: 'all', fMax: 2600,
     aloj: '1300', pb: '0', vuelos: 1200, comida: 400, extras: 200,
+    entrada: '380', shuttle: '0', parking: '0', lockers: '0',
     flOrigin: 'EZE', flDest: 'GRU', flOut: '2027-10-07', flRet: '2027-10-12', flPax: 2
   };
 
@@ -651,12 +689,20 @@ class Component extends DCLogic {
     const vuelos = parseFloat(s.vuelos) || 0;
     const comida = parseFloat(s.comida) || 0;
     const extras = parseFloat(s.extras) || 0;
-    const total = aloj + pb + vuelos + comida + extras;
+    const entrada = s.aloj === '0' ? (parseFloat(s.entrada) || 0) : 0;
+    const shuttle = parseFloat(s.shuttle) || 0;
+    const parking = parseFloat(s.parking) || 0;
+    const lockers = parseFloat(s.lockers) || 0;
+    const total = aloj + pb + vuelos + comida + extras + entrada + shuttle + parking + lockers;
 
     const bd = [
       [en ? 'Accommodation + pass' : 'Alojamiento + pase', aloj],
+      [en ? 'Festival ticket' : 'Entrada al festival', entrada],
       [en ? 'Flights & transfers' : 'Vuelos y traslados', vuelos],
       [en ? 'Food, drinks & Pearls' : 'Comida, bebida y Pearls', comida],
+      [en ? 'Shuttle' : 'Shuttle', shuttle],
+      [en ? 'Parking' : 'Parking', parking],
+      [en ? 'Lockers' : 'Lockers', lockers],
       [en ? 'Other add-ons' : 'Otros adicionales', extras],
       [en ? 'Power bank' : 'Power bank', pb]
     ].filter(b => b[1] > 0).map(b => ({ label: b[0], value: this.money(b[1]) }));
@@ -682,9 +728,17 @@ class Component extends DCLogic {
       alojOpts: [
         { v: '0', l: en ? 'No DreamVille (hotel or own place)' : 'Sin DreamVille (hotel o casa aparte)' },
         { v: '510', l: 'Magnificent Greens · 1 ' + (en ? 'pers.' : 'pers.') + ' · ' + this.money(510) },
+        { v: '950', l: 'Magnificent Greens Confort · 1 pers. · ' + this.money(950) },
+        { v: '1600', l: 'Magnificent Greens N1 · 1 pers. · ' + this.money(1600) },
         { v: '1300', l: 'Vida Nova · 2 pers. · ' + this.money(1300) },
+        { v: '2200', l: 'Vida Nova Confort · 2 pers. · ' + this.money(2200) },
+        { v: '3510', l: 'Vida Nova N1 · 2 pers. · ' + this.money(3510) },
         { v: '1450', l: 'Easy Tent · 2 pers. · ' + this.money(1450) },
+        { v: '2300', l: 'Easy Tent Confort · 2 pers. · ' + this.money(2300) },
+        { v: '3600d', l: 'Easy Tent N1 · 2 pers. · ' + this.money(3600) },
         { v: '1550', l: 'Spectacular Easy Tent · 2 pers. · ' + this.money(1550) },
+        { v: '2450', l: 'Spectacular Easy Tent Confort · 2 pers. · ' + this.money(2450) },
+        { v: '3800', l: 'Spectacular Easy Tent N1 · 2 pers. · ' + this.money(3800) },
         { v: '2500', l: 'Solaris · 2 pers. · ' + this.money(2500) },
         { v: '3600', l: 'Astera · 2 pers. · ' + this.money(3600) },
         { v: '3700', l: 'Luna · 2 pers. · ' + this.money(3700) },
@@ -695,11 +749,43 @@ class Component extends DCLogic {
         { v: '31', l: '5.000 mAh · ' + this.money(31) },
         { v: '45', l: '10.000 mAh · ' + this.money(45) }
       ],
+      entradaOpts: [
+        { v: '150', l: 'Day Pass · ' + this.money(150) },
+        { v: '340', l: 'Day Confort Pass · ' + this.money(340) },
+        { v: '530', l: 'Day Pass N1 · ' + this.money(530) },
+        { v: '380', l: 'Full Madness Pass · ' + this.money(380) },
+        { v: '830', l: 'Full Madness Confort · ' + this.money(830) },
+        { v: '1490', l: 'Full Madness Pass N1 · ' + this.money(1490) }
+      ],
+      shuttleOpts: [
+        { v: '0', l: en ? 'Not renting one' : 'No alquilo' },
+        { v: '75', l: 'Tomorrowland Shuttle · ' + (en ? 'approx. ' : 'aprox. ') + this.money(50) + '–' + this.money(100) },
+        { v: '40', l: 'DreamVille Shuttle · ' + this.money(40) }
+      ],
+      parkingOpts: [
+        { v: '0', l: en ? 'Not renting one' : 'No alquilo' },
+        { v: '30', l: (en ? 'Festival day · motorcycle · ' : 'Día de festival · moto · ') + this.money(30) },
+        { v: '60', l: (en ? 'Festival day · car · ' : 'Día de festival · auto · ') + (en ? 'approx. ' : 'aprox. ') + this.money(60) },
+        { v: '90', l: (en ? 'Festival day · bus · ' : 'Día de festival · autobús · ') + this.money(90) },
+        { v: '120', l: 'DreamVille (jue-lun) · ' + this.money(120) }
+      ],
+      lockersOpts: [
+        { v: '0', l: en ? 'Not renting one' : 'No alquilo' },
+        { v: '15', l: (en ? 'Festival day · small · ' : 'Día de festival · chico · ') + this.money(15) },
+        { v: '20', l: (en ? 'Festival day · large · ' : 'Día de festival · grande · ') + this.money(20) },
+        { v: '80', l: 'DreamVille (jue-lun) · ' + (en ? 'small · ' : 'chico · ') + this.money(80) },
+        { v: '100', l: 'DreamVille (jue-lun) · ' + (en ? 'large · ' : 'grande · ') + this.money(100) }
+      ],
       aloj: s.aloj, onAloj: (e) => this.setState({ aloj: e.target.value }),
       pb: s.pb, onPb: (e) => this.setState({ pb: e.target.value }),
       vuelos: s.vuelos, onVuelos: (e) => this.setState({ vuelos: e.target.value }),
       comida: s.comida, onComida: (e) => this.setState({ comida: e.target.value }),
       extras: s.extras, onExtras: (e) => this.setState({ extras: e.target.value }),
+      entrada: s.entrada, onEntrada: (e) => this.setState({ entrada: e.target.value }),
+      entradaIncluded: s.aloj !== '0',
+      shuttle: s.shuttle, onShuttle: (e) => this.setState({ shuttle: e.target.value }),
+      parking: s.parking, onParking: (e) => this.setState({ parking: e.target.value }),
+      lockers: s.lockers, onLockers: (e) => this.setState({ lockers: e.target.value }),
       totalLabel: this.money(total),
       totalUsdLabel: s.cur === 'USD' ? (en ? 'per group, whole trip' : 'por grupo, viaje completo') : 'US$ ' + Math.round(total).toLocaleString('es-AR'),
       breakdown: bd,
