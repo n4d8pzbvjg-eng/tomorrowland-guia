@@ -326,7 +326,7 @@
         </div>
         <div>
           <p style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#7E9689;margin:0 0 12px">{{ maxLabel }}</p>
-          <input type="range" min="300" max="2600" step="50" value="{{ fMax }}" onChange="{{ onMax }}" style="width:100%">
+          <input type="range" min="300" max="4000" step="50" value="{{ fMax }}" onChange="{{ onMax }}" style="width:100%">
         </div>
       </div>
 
@@ -360,7 +360,7 @@
           </label>
           <label style="display:block">
             <span style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#7E9689;display:block;margin-bottom:8px" data-en="Festival ticket">Entrada al festival</span>
-            <select value="{{ entrada }}" onChange="{{ onEntrada }}" style="width:100%;background:#101C17;border:1px solid #2C4238;color:#E8F0EA;font-family:Jost,sans-serif;font-size:16px;padding:12px 14px;border-radius:10px">
+            <select value="{{ entrada }}" onChange="{{ onEntrada }}" disabled="{{ entradaIncluded }}" style="width:100%;background:#101C17;border:1px solid #2C4238;color:#E8F0EA;font-family:Jost,sans-serif;font-size:16px;padding:12px 14px;border-radius:10px;opacity:{{ entradaOpacity }};cursor:{{ entradaCursor }}">
               <sc-for list="{{ entradaOpts }}" as="o" hint-placeholder-count="6">
                 <option value="{{ o.v }}">{{ o.l }}</option>
               </sc-for>
@@ -602,7 +602,7 @@ class Component extends DCLogic {
   state = {
     lang: 'es', cur: 'USD', showWelcome: true,
     rates: { USD: 1, EUR: 0.92, BRL: 5.45, ARS: 1350 },
-    fCat: 'all', fConf: 'all', fMax: 2600,
+    fCat: 'all', fConf: 'all', fMax: 4000,
     aloj: '1300', vuelos: 1200, comida: 400, extras: 200,
     entrada: '380', shuttle: '0', parking: '0', lockers: '0',
     flOrigin: 'EZE', flDest: 'GRU', flOut: '2027-10-07', flRet: '2027-10-12', flPax: 2
@@ -767,6 +767,8 @@ class Component extends DCLogic {
       extras: s.extras, onExtras: (e) => this.setState({ extras: e.target.value }),
       entrada: s.entrada, onEntrada: (e) => this.setState({ entrada: e.target.value }),
       entradaIncluded: s.aloj !== '0',
+      entradaOpacity: s.aloj !== '0' ? 0.5 : 1,
+      entradaCursor: s.aloj !== '0' ? 'not-allowed' : 'pointer',
       shuttle: s.shuttle, onShuttle: (e) => this.setState({ shuttle: e.target.value }),
       parking: s.parking, onParking: (e) => this.setState({ parking: e.target.value }),
       lockers: s.lockers, onLockers: (e) => this.setState({ lockers: e.target.value }),
