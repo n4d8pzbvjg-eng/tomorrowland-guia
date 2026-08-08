@@ -708,6 +708,9 @@ class Component extends DCLogic {
     }, { threshold: 0.4 });
     r.querySelectorAll('video[loop]').forEach((vid) => {
       vid.muted = true;
+      vid.playsInline = true;
+      vid.setAttribute('playsinline', '');
+      vid.setAttribute('webkit-playsinline', 'true');
       io.observe(vid);
     });
   }
