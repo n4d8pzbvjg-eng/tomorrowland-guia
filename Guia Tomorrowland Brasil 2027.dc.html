@@ -370,14 +370,6 @@
             </sc-if>
           </label>
           <label style="display:block">
-            <span style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#7E9689;display:block;margin-bottom:8px" data-en="Power bank">Power bank</span>
-            <select value="{{ pb }}" onChange="{{ onPb }}" style="width:100%;background:#101C17;border:1px solid #2C4238;color:#E8F0EA;font-family:Jost,sans-serif;font-size:16px;padding:12px 14px;border-radius:10px">
-              <sc-for list="{{ pbOpts }}" as="o" hint-placeholder-count="3">
-                <option value="{{ o.v }}">{{ o.l }}</option>
-              </sc-for>
-            </select>
-          </label>
-          <label style="display:block">
             <span style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#7E9689;display:block;margin-bottom:8px" data-en="Flights &amp; transfers (US$)">Vuelos y traslados (US$)</span>
             <input type="number" value="{{ vuelos }}" onChange="{{ onVuelos }}" style="width:100%;background:#101C17;border:1px solid #2C4238;color:#E8F0EA;font-family:Jost,sans-serif;font-size:16px;padding:12px 14px;border-radius:10px">
           </label>
@@ -611,7 +603,7 @@ class Component extends DCLogic {
     lang: 'es', cur: 'USD', showWelcome: true,
     rates: { USD: 1, EUR: 0.92, BRL: 5.45, ARS: 1350 },
     fCat: 'all', fConf: 'all', fMax: 2600,
-    aloj: '1300', pb: '0', vuelos: 1200, comida: 400, extras: 200,
+    aloj: '1300', vuelos: 1200, comida: 400, extras: 200,
     entrada: '380', shuttle: '0', parking: '0', lockers: '0',
     flOrigin: 'EZE', flDest: 'GRU', flOut: '2027-10-07', flRet: '2027-10-12', flPax: 2
   };
@@ -685,7 +677,6 @@ class Component extends DCLogic {
     }));
 
     const aloj = parseFloat(s.aloj) || 0;
-    const pb = parseFloat(s.pb) || 0;
     const vuelos = parseFloat(s.vuelos) || 0;
     const comida = parseFloat(s.comida) || 0;
     const extras = parseFloat(s.extras) || 0;
@@ -693,7 +684,7 @@ class Component extends DCLogic {
     const shuttle = parseFloat(s.shuttle) || 0;
     const parking = parseFloat(s.parking) || 0;
     const lockers = parseFloat(s.lockers) || 0;
-    const total = aloj + pb + vuelos + comida + extras + entrada + shuttle + parking + lockers;
+    const total = aloj + vuelos + comida + extras + entrada + shuttle + parking + lockers;
 
     const bd = [
       [en ? 'Accommodation + pass' : 'Alojamiento + pase', aloj],
@@ -703,8 +694,7 @@ class Component extends DCLogic {
       [en ? 'Shuttle' : 'Shuttle', shuttle],
       [en ? 'Parking' : 'Parking', parking],
       [en ? 'Lockers' : 'Lockers', lockers],
-      [en ? 'Other add-ons' : 'Otros adicionales', extras],
-      [en ? 'Power bank' : 'Power bank', pb]
+      [en ? 'Other add-ons' : 'Otros adicionales', extras]
     ].filter(b => b[1] > 0).map(b => ({ label: b[0], value: this.money(b[1]) }));
 
     return {
@@ -744,11 +734,6 @@ class Component extends DCLogic {
         { v: '3700', l: 'Luna · 2 pers. · ' + this.money(3700) },
         { v: '3900', l: 'Grande · 4 pers. · ' + this.money(3900) }
       ],
-      pbOpts: [
-        { v: '0', l: en ? 'Not renting one' : 'No alquilo' },
-        { v: '31', l: '5.000 mAh · ' + this.money(31) },
-        { v: '45', l: '10.000 mAh · ' + this.money(45) }
-      ],
       entradaOpts: [
         { v: '150', l: 'Day Pass · ' + this.money(150) },
         { v: '340', l: 'Day Confort Pass · ' + this.money(340) },
@@ -777,7 +762,6 @@ class Component extends DCLogic {
         { v: '100', l: 'DreamVille (jue-lun) · ' + (en ? 'large · ' : 'grande · ') + this.money(100) }
       ],
       aloj: s.aloj, onAloj: (e) => this.setState({ aloj: e.target.value }),
-      pb: s.pb, onPb: (e) => this.setState({ pb: e.target.value }),
       vuelos: s.vuelos, onVuelos: (e) => this.setState({ vuelos: e.target.value }),
       comida: s.comida, onComida: (e) => this.setState({ comida: e.target.value }),
       extras: s.extras, onExtras: (e) => this.setState({ extras: e.target.value }),
