@@ -1,0 +1,16 @@
+{
+  "name": "tomorrowland-guia",
+  "version": "1.0.0",
+  "description": "Guía para primerizos - Tomorrowland Brasil 2027",
+  "type": "module",
+  "scripts": {
+    "build": "echo 'No build step required for static HTML'",
+    "lint": "echo 'No linter configured'"
+  },
+  "keywords": ["tomorrowland", "guia", "brasil"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vercel/analytics": "^1.4.1"
+  }
+}
