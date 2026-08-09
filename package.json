@@ -1,0 +1,9 @@
+{
+  "name": "tomorrowland-guia",
+  "version": "1.0.0",
+  "description": "Guía Tomorrowland Brasil 2027",
+  "private": true,
+  "dependencies": {
+    "@vercel/analytics": "^1.4.1"
+  }
+}
